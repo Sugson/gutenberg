@@ -1148,6 +1148,7 @@ function gutenberg_editor_scripts_and_styles( $hook ) {
 	$gutenberg_theme_support = get_theme_support( 'gutenberg' );
 	$align_wide              = get_theme_support( 'align-wide' );
 	$color_palette           = current( (array) get_theme_support( 'editor-color-palette' ) );
+	$font_sizes              = current( (array) get_theme_support( 'editor-font-sizes' ) );
 
 	// Backcompat for Color Palette set as multiple parameters.
 	if ( is_string( $color_palette ) || isset( $color_palette['color'] ) ) {
@@ -1170,6 +1171,10 @@ function gutenberg_editor_scripts_and_styles( $hook ) {
 			__( 'Adding theme support using the `gutenberg` array is deprecated. See https://wordpress.org/gutenberg/handbook/extensibility/theme-support/ for details.', 'gutenberg' ),
 			'3.4.0'
 		);
+	}
+
+	if ( ! empty( $font_sizes ) ) {
+		$editor_settings['fontSizes'] = $font_sizes;
 	}
 
 	/**
